@@ -281,6 +281,10 @@ int64_t nrow_loaded; // number of loaded rows
 //----------------------------------------------------------------------------
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification 
 {
+  if (@available(macOS 10.14, *))
+  {
+      NSApp.appearance = [NSAppearance appearanceNamed: NSAppearanceNameAqua];
+  }
 #ifdef MV_STATISTICS
   nrow_total = nrow_loaded = 0;
   [NSThread detachNewThreadSelector:@selector(printStat) toTarget:self withObject:nil];
